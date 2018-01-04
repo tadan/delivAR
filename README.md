@@ -4,15 +4,16 @@
 - **Open Source** : It is completely open source and free of charge!
 - **Standards** : It works on any phone with [webgl](http://caniuse.com/#feat=webgl) and [webrtc](http://caniuse.com/#feat=stream)
 
+# Folders
 
-If you wanna chat with the developers of AR.js, check [![Gitter chat](https://badges.gitter.im/AR-js/Lobby.png)](https://gitter.im/AR-js/Lobby)
-
-# Library added
+- ```/three.js``` is the extension to use it with [pure three.js](https://threejs.org)
+  *in case of further development, not use for this project but it works*
+- ```/aframe``` is the extension to use it with [a-frame](https://aframe.io)
+  **here you can find the test for 3,6,9,12 indipendent markers.**
 
 # Performance
 
 We are still early in the project but here are some initial numbers to give you an idea.
-
 
 - I got 60fps stable on nexus6p
 - Some reports [Sony Xperia Z2 (2.5 years old) runs around 50fps](https://twitter.com/leinadkalpot/status/834121238087925763) - this is a 170euro phone
@@ -20,22 +21,8 @@ We are still early in the project but here are some initial numbers to give you 
 - Some reports it working on windows phone edge!! [13fps on Lumia 950](https://twitter.com/leinadkalpot/status/834299384510763012) for some.
   [40-45fps on lumia 930](https://twitter.com/fastclemmy/status/834817155665391616) for others.
 
-# Full Featured Marker based
-With this project, we bring more performance to artoolkit.
-artoolkit is a software with years of experience doing augmented reality. It is able to do a lot!
-
-It is marker based. It supports a wide range of markers: multiple types of markers [pattern](https://artoolkit.org/documentation/doku.php?id=3_Marker_Training:marker_training)/[barcode](https://artoolkit.org/documentation/doku.php?id=3_Marker_Training:marker_barcode)
-multiple independent markers at the same time, or [multiple markers acting as a single marker](https://artoolkit.org/documentation/doku.php?id=3_Marker_Training:marker_multi)
-up to you to choose.
-
-
-# Folders
-- ```/three.js``` is the extension to use it with [pure three.js](https://threejs.org)
-  in case of further development.
-- ```/aframe``` is the extension to use it with [a-frame](https://aframe.io)
-  # here you can find the test for 3,6,9,12 indipendent markers
-
 # Licenses
+
 It is **all open source** ! jsartoolkit5 is under LGPLv3 license and additional permission.
 And All my code in AR.js repository is under MIT license. :)
 
@@ -60,3 +47,4 @@ Demo tested on the following browser setups:
 
 [FAQ.md](https://jeromeetienne.github.io/AR.js-docs/misc/FAQ.html)
 
+If you wanna chat with the developers of AR.js, check [![Gitter chat](https://badges.gitter.im/AR-js/Lobby.png)](https://gitter.im/AR-js/Lobby)
