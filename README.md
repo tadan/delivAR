@@ -6,10 +6,8 @@
 
 # Folders
 
-- ```/three.js``` is the extension to use it with [pure three.js](https://threejs.org)
-  *in case of further development, not use for this project but it works*
 - ```/aframe``` is the extension to use it with [a-frame](https://aframe.io)
-  **here you can find the test for 3,6,9,12 indipendent markers.**
+  **here you can find the test.html file used for the experiment**
 
 # Performance
 

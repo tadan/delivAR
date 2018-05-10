@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<head>
+<!-- A-Frame AR.js libraries -->
+<script src="examples/vendor/aframe/build/aframe.min.js"></script>
+<script src="build/aframe-ar.js"></script>
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118286684-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-118286684-1');
+</script>
+<!-- CSS Style -->
+<style>
+	body{
+		margin:0px; 
+		overflow:hidden;
+	}
+	#arjsDebugUIContainer, .a-enter-vr-button{
+		display:none;
+	}
+</style>
+</head>
+<body id="body">
+	<!-- Enable webcam -->
+	<a-scene embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
+ 		<!-- Enable Markers -->
+		<a-marker type='barcode' value='0'> 
+			<!-- Red -->
+			<a-sphere color="#FF0000" radius="0.55" opacity="0.5">
+					<a-circle id= "a-circle" src="../../data/images/airmee.png" radius="0.5">
+						<a-animation attribute="rotation" to="-90 0 90" dur="1000" easing='linear' repeat="1"></a-animation>
+					</a-circle>
+				</a-sphere>
+		</a-marker>
+		<!-- add a simple camera -->
+		<a-entity camera></a-entity>
+	</a-scene>
+</body>
+
+<script>
+
+
+var identificationStart = new Date();
+
+(function ($) {
+    var defaults = {
+        callback: function () { },
+        runOnLoad: true,
+        frequency: 100,
+        previousVisibility : null
+    };
+
+    var methods = {};
+	methods.checkVisibility = function (element, options) {
+		element.object3D = {}
+		element.object3D.visible = element[0].object3D.visible;
+        if (jQuery.contains(document, element[0])) {
+
+            var previousVisibility = options.previousVisibility;
+            var isVisible = element.object3D.visible;
+            options.previousVisibility = isVisible;
+			var initialLoad = previousVisibility == null
+			//console.log(previousVisibility, isVisible)
+
+            if (initialLoad) {
+                if (options.runOnLoad) {
+                    options.callback(element, isVisible, initialLoad);
+                }
+            } else if (previousVisibility !== isVisible) {
+				if (!previousVisibility) {
+					var identificationStop = new Date();
+					var timeToIdentify = (identificationStop.getTime() - identificationStart.getTime());
+					console.log("identified in "+timeToIdentify+" millisecond ");
+
+					gtag('event', 'identification', { "duration": timeToIdentify } );
+				} else identificationStart = new Date();
+                options.callback(element, isVisible, initialLoad);
+            }
+
+            setTimeout(function() {
+                methods.checkVisibility(element, options);
+            }, options.frequency);
+        }
+    };
+
+    $.fn.visibilityChanged = function (options) {
+        var settings = $.extend({}, defaults, options);
+        return this.each(function () {
+            methods.checkVisibility($(this), settings);
+        });
+    };
+})(jQuery);
+
+
+var sceneEl = document.querySelector('a-scene');
+console.log(sceneEl)
+ 
+
+var sphereAnimation = document.querySelector('a-animation');
+
+console.log(sphereAnimation)
+
+sphereAnimation.addEventListener('animationstart', function () {
+  console.log("animation started")
+});
+
+sphereAnimation.addEventListener('animationend', function () {
+  console.log("animation ended")
+});
+
+
+	console.log(  $('a-marker'))
+  $('a-marker').visibilityChanged(function(element, visible) {
+    console.log('VISIBILITY CHANGED FOR ELEMENT', visible);
+	});
+
+</script>
+</html>

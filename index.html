@@ -1,43 +1,35 @@
 <!DOCTYPE html>
-<body style='margin:0; overflow: hidden;'>
-<style>
-    button{
-        padding:1.5em;
-        margin:1em;
-        width:150px;
-    }
-</style>
-<div style="margin:2em auto; width:700px;">   
-    <h2>Airmee AR Package Tracker</h2> 
-    <div style="float: right; width: 33%;">
-    <a href="/aframe/examples/3-boxes.html"><button>3 Boxes</button></a>
-    <br>
-    <a href="/aframe/examples/6-boxes.html"><button>6 Boxes</button></a>
-    <br>
-    <a href="/aframe/examples/9-boxes.html"><button>9 Boxes</button></a>
-    <br>
-    <a href="/aframe/examples/12-boxes.html"><button>12 Boxes</button></a>
-    <br></div>
+<html lang="en">
+    <head>
+        <!-- Responsive Meta tag-->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- Latest compiled and minified JavaScript & jQuery-->
+        <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+       <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118286684-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
-    <div style=" display: inline-block; width: 33%;">
-    <a href="/aframe/examples/3-spheres.html"><button>3 Spheres</button></a>
-    <br>
-    <a href="/aframe/examples/6-spheres.html"><button>6 Spheres</button></a>
-    <br>
-    <a href="/aframe/examples/9-spheres.html"><button>9 Spheres</button></a>
-    <br>
-    <a href="/aframe/examples/12-spheres.html"><button>12 Spheres</button></a>
-    <br></div>
-
-    <div style="float: left; width: 33%;">
-    <a href="/aframe/examples/3-triangles.html"><button>3 Triangles</button></a>
-    <br>
-    <a href="/aframe/examples/6-triangles.html"><button>6 Triangles</button></a>
-    <br>
-    <a href="/aframe/examples/9-triangles.html"><button>9 Triangles</button></a>
-    <br>
-    <a href="/aframe/examples/12-triangles.html"><button>12 Triangles</button></a>
-    </div>
-</div>
-</body>
+            gtag('config', 'UA-118286684-1');
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12 text-center">
+                    <h3>DelivAR - AR Package Tracker</h3>
+                    <h5>This is an experiment to test the AR capabilities of AR.js. <br> Press Start to begin the experiment</h5>
+                    <input type="button" class="btn btn-primary" value="Start" onclick="location.href = '/aframe/test.html'" style="margin-top: 20px">
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
