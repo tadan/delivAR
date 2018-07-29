@@ -83,17 +83,20 @@
 </style>
 </head>
 <body id="body">
-    <a href="./../index.html"><div class="l-arrow-circ"></div></a>
-    <div class="textBottom">
-    <h5 class="title">Identification Time [ms]:</h5>
-    <h5 id="recTime"></h5></div>
-    <div class="imgCont">
-    <img src="./../data/images/delivAR_logo_svg.svg" alt="delivAR Logo"></div>
+  <!-- Arrow Left -->
+  <a href="./../index.html"><div class="l-arrow-circ"></div></a>
+  <!-- Text Box in the bottom-->
+  <div class="textBottom">
+  <h5 class="title">Identification Time [ms]:</h5>
+  <h5 id="recTime"></h5></div>
+  <!-- delivAR logo -->
+  <div class="imgCont">
+  <img src="./../data/images/delivAR_logo_svg.svg" alt="delivAR Logo"></div>
 	<!-- Enable webcam -->
 	<a-scene embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
  		<!-- Enable Markers -->
 		<a-marker type='barcode' value='0'> 
-			<!-- Red -->
+			<!-- Blue Box w/ Airmee (rounded) logo -->
 			<a-box color="#224c9b" radius="0.55" opacity="0.5">
 					<a-circle id= "a-circle" src="../../data/images/airmee.png" radius="0.5">
 						<a-animation attribute="rotation" to="-90 0 90" dur="1000" easing='linear' repeat="1"></a-animation>
@@ -106,7 +109,7 @@
 </body>
 
 <script>
-
+// Starting of the timer
 var identificationStart = new Date();
 //gtag('event', 'identification', {'timer_start': identificationStart });
 
@@ -117,8 +120,8 @@ var identificationStart = new Date();
         frequency: 100,
         previousVisibility : null
     };
-
-    var methods = {};
+  // Marker Detection
+  var methods = {};
 	methods.checkVisibility = function (element, options) {
 		element.object3D = {}
 		element.object3D.visible = element[0].object3D.visible;
@@ -138,9 +141,9 @@ var identificationStart = new Date();
 				if (!previousVisibility) {
 					var identificationStop = new Date();
 					var timeToIdentify = identificationStop.getTime() - identificationStart.getTime();
-                    console.log("identified in "+timeToIdentify+" millisecond ");
+                    // console.log("identified in "+timeToIdentify+" millisecond ");
                     document.querySelector("#recTime").innerHTML = timeToIdentify;
-                    /*gtag('event', 'identification', { 'duration': 'milliseconds', 'value': timeToIdentify } );*/
+                    /* gtag('event', 'identification', { 'duration': 'milliseconds', 'value': timeToIdentify } ); */
 				} else identificationStart = new Date();
                 options.callback(element, isVisible, initialLoad);
 					
