@@ -5,18 +5,23 @@
 <script src="build/aframe-ar.js"></script>
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118286684-1"></script>
+<!--<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118286684-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'UA-118286684-1');
-</script>
+</script>-->
 <!-- CSS Style -->
 <style>
+    *:before,
+    *:after {
+        box-sizing: border-box;
+    }
 	body{
 		margin:0px; 
 		overflow:hidden;
@@ -24,19 +29,76 @@
 	#arjsDebugUIContainer, .a-enter-vr-button{
 		display:none;
 	}
+    .textBottom{
+        position:absolute;
+        display:inline-flex;
+        background-color:white;
+        z-index:1;
+        bottom:0.5em;
+        padding:.5em;
+        border-radius: 5px;
+        left:10px;
+        color:black;
+        font-family: 'Roboto', sans-serif;
+        align-items: center;
+        vertical-align: middle;
+    }
+    .imgCont{
+        background-color: white;
+        position: absolute;
+        width:60px;
+        border-radius:5px;
+        top:10px;
+        right:10px;
+    }
+    #recTime{
+        margin:.5em;
+    }
+    h5{
+        margin:0;
+    }
+    .l-arrow-circ{
+        position: absolute;
+        top:10px;
+        left:10px;
+        width: 35px;
+        z-index:1;
+        height: 35px;
+        border-radius: 5px;
+        box-sizing: border-box;
+        background-color:white;
+    }
+    .l-arrow-circ:before {
+        content:"";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 35%;
+        height: 35%;
+        border-left: 3px solid #333;
+        border-bottom: 3px solid #333;
+        -webkit-transform: translate(-30% -50%) rotate(45deg);
+        transform: translate(-30%, -50%) rotate(45deg);
+    }
 </style>
 </head>
 <body id="body">
+    <a href="./../index.html"><div class="l-arrow-circ"></div></a>
+    <div class="textBottom">
+    <h5 class="title">Identification Time [ms]:</h5>
+    <h5 id="recTime"></h5></div>
+    <div class="imgCont">
+    <img src="./../data/images/delivAR_logo_svg.svg" alt="delivAR Logo"></div>
 	<!-- Enable webcam -->
 	<a-scene embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
  		<!-- Enable Markers -->
 		<a-marker type='barcode' value='0'> 
 			<!-- Red -->
-			<a-sphere color="#FF0000" radius="0.55" opacity="0.5">
+			<a-box color="#224c9b" radius="0.55" opacity="0.5">
 					<a-circle id= "a-circle" src="../../data/images/airmee.png" radius="0.5">
 						<a-animation attribute="rotation" to="-90 0 90" dur="1000" easing='linear' repeat="1"></a-animation>
 					</a-circle>
-				</a-sphere>
+				</a-box>
 		</a-marker>
 		<!-- add a simple camera -->
 		<a-entity camera></a-entity>
@@ -45,8 +107,8 @@
 
 <script>
 
-
 var identificationStart = new Date();
+//gtag('event', 'identification', {'timer_start': identificationStart });
 
 (function ($) {
     var defaults = {
@@ -75,12 +137,13 @@ var identificationStart = new Date();
             } else if (previousVisibility !== isVisible) {
 				if (!previousVisibility) {
 					var identificationStop = new Date();
-					var timeToIdentify = (identificationStop.getTime() - identificationStart.getTime());
-					console.log("identified in "+timeToIdentify+" millisecond ");
-
-					gtag('event', 'identification', { "duration": timeToIdentify } );
+					var timeToIdentify = identificationStop.getTime() - identificationStart.getTime();
+                    console.log("identified in "+timeToIdentify+" millisecond ");
+                    document.querySelector("#recTime").innerHTML = timeToIdentify;
+                    /*gtag('event', 'identification', { 'duration': 'milliseconds', 'value': timeToIdentify } );*/
 				} else identificationStart = new Date();
                 options.callback(element, isVisible, initialLoad);
+					
             }
 
             setTimeout(function() {
@@ -99,12 +162,12 @@ var identificationStart = new Date();
 
 
 var sceneEl = document.querySelector('a-scene');
-console.log(sceneEl)
+//console.log(sceneEl)
  
 
 var sphereAnimation = document.querySelector('a-animation');
 
-console.log(sphereAnimation)
+//console.log(sphereAnimation)
 
 sphereAnimation.addEventListener('animationstart', function () {
   console.log("animation started")
