@@ -97,11 +97,11 @@
  		<!-- Enable Markers -->
 		<a-marker type='barcode' value='0'> 
 			<!-- Blue Box w/ Airmee (rounded) logo -->
-			<a-box color="#224c9b" radius="0.55" opacity="0.5">
-					<a-circle id= "a-circle" src="../../data/images/airmee.png" radius="0.5">
-						<a-animation attribute="rotation" to="-90 0 90" dur="1000" easing='linear' repeat="1"></a-animation>
-					</a-circle>
-				</a-box>
+            <a-box color="#224c9b" radius="0.55" opacity="0.5">
+                <a-circle id= "a-circle" rotation="-90 0 0" src="../../data/images/airmee.png" radius="0.5">
+                    <!--<a-animation attribute="rotation" to="-90 0 90" dur="1000" easing='linear' repeat="1"></a-animation>-->
+                </a-circle>
+            </a-box>
 		</a-marker>
 		<!-- add a simple camera -->
 		<a-entity camera></a-entity>
@@ -168,7 +168,7 @@ var sceneEl = document.querySelector('a-scene');
 //console.log(sceneEl)
  
 
-var sphereAnimation = document.querySelector('a-animation');
+var sphereAnimation = document.querySelector('a-circle');
 
 //console.log(sphereAnimation)
 
