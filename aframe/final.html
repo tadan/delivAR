@@ -1,34 +1,27 @@
 <!DOCTYPE html>
 <head>
-<!-- A-Frame AR.js libraries -->
-<script src="examples/vendor/aframe/build/aframe.min.js"></script>
-<script src="build/aframe-ar.js"></script>
-<!-- jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <title>delivAR</title>
+  <!-- A-Frame AR.js libraries -->
+  <script src="examples/vendor/aframe/build/aframe.min.js"></script>
+  <script src="build/aframe-ar.js"></script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<!--<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118286684-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
-  gtag('config', 'UA-118286684-1');
-</script>-->
-<!-- CSS Style -->
-<style>
-    *:before,
-    *:after {
+  <!-- CSS Style -->
+  <style>
+  *:before,
+  *:after {
         box-sizing: border-box;
     }
-	body{
-		margin:0px; 
-		overflow:hidden;
-	}
-	#arjsDebugUIContainer, .a-enter-vr-button{
-		display:none;
-	}
+  body{
+    margin:0px; 
+    overflow:hidden;
+  }
+  #arjsDebugUIContainer, .a-enter-vr-button{
+    display:none;
+  }
     .textBottom{
         position:absolute;
         display:inline-flex;
@@ -80,8 +73,9 @@
         -webkit-transform: translate(-30% -50%) rotate(45deg);
         transform: translate(-30%, -50%) rotate(45deg);
     }
-</style>
+  </style>
 </head>
+<!-- HTML -->
 <body id="body">
   <!-- Arrow Left -->
   <a href="./../index.html"><div class="l-arrow-circ"></div></a>
@@ -109,82 +103,74 @@
 </body>
 
 <script>
-// Starting of the timer
-var identificationStart = new Date();
-//gtag('event', 'identification', {'timer_start': identificationStart });
 
-(function ($) {
-    var defaults = {
-        callback: function () { },
-        runOnLoad: true,
-        frequency: 100,
-        previousVisibility : null
-    };
-  // Marker Detection
-  var methods = {};
-	methods.checkVisibility = function (element, options) {
-		element.object3D = {}
-		element.object3D.visible = element[0].object3D.visible;
-        if (jQuery.contains(document, element[0])) {
+  // Starting of the timer
+  var identificationStart = new Date();
 
-            var previousVisibility = options.previousVisibility;
-            var isVisible = element.object3D.visible;
-            options.previousVisibility = isVisible;
-			var initialLoad = previousVisibility == null
-			//console.log(previousVisibility, isVisible)
+  (function ($) {
+      var defaults = {
+          callback: function () { },
+          runOnLoad: true,
+          frequency: 100,
+          previousVisibility : null
+      };
+    // Marker Detection
+    var methods = {};
+    methods.checkVisibility = function (element, options) {
+      element.object3D = {}
+      element.object3D.visible = element[0].object3D.visible;
+          if (jQuery.contains(document, element[0])) {
 
-            if (initialLoad) {
-                if (options.runOnLoad) {
-                    options.callback(element, isVisible, initialLoad);
-                }
-            } else if (previousVisibility !== isVisible) {
-				if (!previousVisibility) {
-					var identificationStop = new Date();
-					var timeToIdentify = identificationStop.getTime() - identificationStart.getTime();
-                    // console.log("identified in "+timeToIdentify+" millisecond ");
-                    document.querySelector("#recTime").innerHTML = timeToIdentify;
-                    /* gtag('event', 'identification', { 'duration': 'milliseconds', 'value': timeToIdentify } ); */
-				} else identificationStart = new Date();
-                options.callback(element, isVisible, initialLoad);
-					
-            }
+              var previousVisibility = options.previousVisibility;
+              var isVisible = element.object3D.visible;
+              options.previousVisibility = isVisible;
+        var initialLoad = previousVisibility == null
+        //console.log(previousVisibility, isVisible)
+              if (initialLoad) {
+                  if (options.runOnLoad) {
+                      options.callback(element, isVisible, initialLoad);
+                  }
+              } else if (previousVisibility !== isVisible) {
+          if (!previousVisibility) {
+            var identificationStop = new Date();
+            var timeToIdentify = identificationStop.getTime() - identificationStart.getTime();
+                      // console.log("identified in "+timeToIdentify+" millisecond ");
+                      document.querySelector("#recTime").innerHTML = timeToIdentify;
+          } else identificationStart = new Date();
+                  options.callback(element, isVisible, initialLoad);
+            
+              }
 
-            setTimeout(function() {
-                methods.checkVisibility(element, options);
-            }, options.frequency);
-        }
-    };
+              setTimeout(function() {
+                  methods.checkVisibility(element, options);
+              }, options.frequency);
+          }
+      };
 
-    $.fn.visibilityChanged = function (options) {
-        var settings = $.extend({}, defaults, options);
-        return this.each(function () {
-            methods.checkVisibility($(this), settings);
-        });
-    };
-})(jQuery);
+      $.fn.visibilityChanged = function (options) {
+          var settings = $.extend({}, defaults, options);
+          return this.each(function () {
+              methods.checkVisibility($(this), settings);
+          });
+      };
+  })(jQuery);
 
 
-var sceneEl = document.querySelector('a-scene');
-//console.log(sceneEl)
- 
+  var sceneEl = document.querySelector('a-scene');
+  
+  var sphereAnimation = document.querySelector('a-circle');
 
-var sphereAnimation = document.querySelector('a-circle');
+  sphereAnimation.addEventListener('animationstart', function () {
+    console.log("animation started")
+  });
 
-//console.log(sphereAnimation)
-
-sphereAnimation.addEventListener('animationstart', function () {
-  console.log("animation started")
-});
-
-sphereAnimation.addEventListener('animationend', function () {
-  console.log("animation ended")
-});
-
-
-	console.log(  $('a-marker'))
+  sphereAnimation.addEventListener('animationend', function () {
+    console.log("animation ended")
+  });
+  console.log(  $('a-marker'))
   $('a-marker').visibilityChanged(function(element, visible) {
     console.log('VISIBILITY CHANGED FOR ELEMENT', visible);
-	});
+  });
 
 </script>
 </html>
