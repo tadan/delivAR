@@ -93,23 +93,23 @@
 			      <a-entity id="green-ok" collada-model="url(https://raw.githubusercontent.com/tadan/delivAR/master/data/images/mark.dae)"></a-entity>
         </a-marker>
 
-        <a-marker type='barcode' value='1'>
+        <a-marker type='barcode' value='5'>
                 <a-entity id="red-cross" collada-model="url(https://raw.githubusercontent.com/tadan/delivAR/master/data/images/mark2.dae)"></a-entity>
 		</a-marker>
 
-		<a-marker type='barcode' value='2'>
+		<a-marker type='barcode' value='7'>
                 <a-entity id="red-cross1" collada-model="url(https://raw.githubusercontent.com/tadan/delivAR/master/data/images/mark2.dae)"></a-entity>
 		</a-marker>
 
-        <a-marker type='barcode' value='3'>
+        <a-marker type='barcode' value='10'>
                 <a-entity id="red-cross2" collada-model="url(https://raw.githubusercontent.com/tadan/delivAR/master/data/images/mark2.dae)"></a-entity>
         </a-marker>
         
-        <a-marker type='barcode' value='4'>
+        <a-marker type='barcode' value='9'>
                 <a-entity id="red-cross3" collada-model="url(https://raw.githubusercontent.com/tadan/delivAR/master/data/images/mark2.dae)"></a-entity>
             </a-box>
         </a-marker>
-        <a-marker type='barcode' value='5'>
+        <a-marker type='barcode' value='2'>
                 <a-entity id="red-cross4" collada-model="url(https://raw.githubusercontent.com/tadan/delivAR/master/data/images/mark2.dae)"></a-entity>
         </a-marker>
         <a-marker type='barcode' value='6'>
@@ -176,19 +176,22 @@
 
 
   var sceneEl = document.querySelector('a-scene');
+  // barcode 0
   var greenEntity = document.querySelector('#green-ok');
   greenEntity.setAttribute('position', { x: 0.488, y: -4.327, z: 8.105 });
   greenEntity.setAttribute('rotation', { x: -2.2, y: 169.19, z: -94.5 });
-  var redEntity = document.querySelector('#red-cross5');
-  redEntity.setAttribute('position', { x: 2.048, y: -4.74, z: -10.21 });
+  // barcode 10
+  var redEntity = document.querySelector('#red-cross2');
+  redEntity.setAttribute('position', { x: -0.402, y: -12.15, z: -8.01 });
   redEntity.setAttribute('rotation', { x: -34.49, y: -1.2, z: -72.99 });
-  /*var redEntity1 = document.querySelector('#red-cross1');
-  redEntity1.setAttribute('position', { x: 0.17, y: -8.74, z: -13.441 });
-  redEntity1.setAttribute('rotation', { x: -16, y: -17, z: -119.5 });
-  var redEntity2 = document.querySelector('#red-cross2');
-  redEntity2.setAttribute('position', { x: 13.263, y: -1.146, z: -13.511 });
-  redEntity2.setAttribute('rotation', { x: 5, y: 0.5, z: -62.9 });
-*/
+  // barcode 5
+  var redEntity1 = document.querySelector('#red-cross');
+  redEntity1.setAttribute('position', { x: 1.379, y: -9.34, z: -11.442 });
+  redEntity1.setAttribute('rotation', { x: -19.4, y: -0.63, z: -51.5 });
+  // barcode 7
+  var redEntity2 = document.querySelector('#red-cross1');
+  redEntity2.setAttribute('position', { x: .989, y: -4.646, z: -13.471 });
+  redEntity2.setAttribute('rotation', { x: 2.6, y: -6.9, z: -76.9 });
 
   var sphereAnimation = document.querySelector('a-entity');
 
