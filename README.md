@@ -1,13 +1,13 @@
-<img src="https://github.com/tadan/delivAR/blob/master/data/images/delivAR_logo_svg.svg" width="200">
+<img src="https://github.com/tadan/delivAR/blob/master/data/images/delivAR_logo_svg.svg" width="300">
 
 # delivAR 📦 An AR Package Tracker made with AR.js
 
-# Folders 
+## Folders 
 
 - ```/aframe``` is the extension to use it with [a-frame](https://aframe.io),
   **here you can find the final.html file used for the experiment**
 
-# Licenses
+## Licenses
 
 This repository is based on AR.js, it is **all open source**! jsartoolkit5 is under LGPLv3 license and additional permission.
 
