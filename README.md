@@ -1,10 +1,8 @@
-![alt text](https://github.com/tadan/delivAR/blob/master/data/images/delivAR_logo_svg.svg)
+<img src="https://github.com/tadan/delivAR/blob/master/data/images/delivAR_logo_svg.svg" width="200">
 
-# delivAR - An AR Package Tracker made with AR.js
+# delivAR 📦 An AR Package Tracker made with AR.js
 
-- **Web-based** : It is a pure web solution, so no installation required.
-
-# Folders
+# Folders 
 
 - ```/aframe``` is the extension to use it with [a-frame](https://aframe.io),
   **here you can find the final.html file used for the experiment**
