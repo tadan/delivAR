@@ -81,7 +81,7 @@
   <a href="./../index.html"><div class="l-arrow-circ"></div></a>
   <!-- Text Box in the bottom-->
   <div class="textBottom">
-  <h5 class="title">Identification Time [ms]:</h5>
+  <h5 class="title"> Test Identification Time [ms]:</h5>
   <h5 id="recTime"></h5></div>
   <!-- delivAR logo -->
   <div class="imgCont">
@@ -98,31 +98,22 @@
 		</a-marker>
 
 		<a-marker type='barcode' value='2'>
-			<!-- Yellow #FFFF00 -->
-			<a-box color="#FFFF00" opacity="0.5">
-			</a-box>
+                <a-entity id="red-cross1" collada-model="url(https://raw.githubusercontent.com/tadan/delivAR/master/data/images/mark2.dae)"></a-entity>
 		</a-marker>
 
-        <a-marker type='barcode' value='2'>
-                <!-- Yellow #FFFF00 -->
-                <a-box color="#FFFF00" opacity="0.5">
-                </a-box>
+        <a-marker type='barcode' value='3'>
+                <a-entity id="red-cross2" collada-model="url(https://raw.githubusercontent.com/tadan/delivAR/master/data/images/mark2.dae)"></a-entity>
         </a-marker>
         
-        <a-marker type='barcode' value='3'>
-                <!-- Yellow #FFFF00 -->
-                <a-box color="#FFFF00" opacity="0.5">
+        <a-marker type='barcode' value='4'>
+                <a-entity id="red-cross3" collada-model="url(https://raw.githubusercontent.com/tadan/delivAR/master/data/images/mark2.dae)"></a-entity>
             </a-box>
         </a-marker>
-        <a-marker type='barcode' value='4'>
-                <!-- Yellow #FFFF00 -->
-                <a-box color="#FFFF00" opacity="0.5">
-                </a-box>
-        </a-marker>
         <a-marker type='barcode' value='5'>
-                <!-- Yellow #FFFF00 -->
-                <a-box color="#FFFF00" opacity="0.5">
-                </a-box>
+                <a-entity id="red-cross4" collada-model="url(https://raw.githubusercontent.com/tadan/delivAR/master/data/images/mark2.dae)"></a-entity>
+        </a-marker>
+        <a-marker type='barcode' value='6'>
+                <a-entity id="red-cross5" collada-model="url(https://raw.githubusercontent.com/tadan/delivAR/master/data/images/mark2.dae)"></a-entity>
         </a-marker>
 
         <!-- add a simple camera -->
@@ -185,14 +176,21 @@
 
 
   var sceneEl = document.querySelector('a-scene');
-  var greenEntity = document.querySelector('#green-ok');
-  greenEntity.setAttribute('position', { x: -8.74, y: -3.674, z: -0.181 });
-  greenEentity.setAttribute('rotation', { x: 7, y: 82, z: -92.5 });
+  /*var greenEntity = document.querySelector('#green-ok');
+  //greenEntity.setAttribute('position', { x: -8.7, y: -1.374, z: -3.481 });
+  //greenEntity.setAttribute('rotation', { x: 20, y: 70, z: -81.5 });
   var redEntity = document.querySelector('#red-cross');
-  redEntity.setAttribute('position', { x: -2.74, y: -1.674, z: -4.181 });
-  redEentity.setAttribute('rotation', { x: 7, y: 82, z: -92.5 });
+  redEntity.setAttribute('position', { x: 6.17, y: -6.74, z: -12.91 });
+  redEntity.setAttribute('rotation', { x: -3.5, y: -25.6, z: -81.1 });
+  var redEntity1 = document.querySelector('#red-cross1');
+  redEntity1.setAttribute('position', { x: 0.17, y: -8.74, z: -13.441 });
+  redEntity1.setAttribute('rotation', { x: -16, y: -17, z: -119.5 });
+  var redEntity2 = document.querySelector('#red-cross2');
+  redEntity2.setAttribute('position', { x: 13.263, y: -1.146, z: -13.511 });
+  redEntity2.setAttribute('rotation', { x: 5, y: 0.5, z: -62.9 });
+*/
 
-  var sphereAnimation = document.querySelector('a-entity');
+  var sphereAnimation = document.querySelector('#a-entity');
 
   sphereAnimation.addEventListener('animationstart', function () {
     console.log("animation started")
