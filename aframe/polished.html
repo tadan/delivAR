@@ -81,7 +81,7 @@
   <a href="./../index.html"><div class="l-arrow-circ"></div></a>
   <!-- Text Box in the bottom-->
   <div class="textBottom">
-  <h5 class="title"> Test Identification Time [ms]:</h5>
+  <h5 class="title">Identification Time [ms]:</h5>
   <h5 id="recTime"></h5></div>
   <!-- delivAR logo -->
   <div class="imgCont">
@@ -176,10 +176,10 @@
 
 
   var sceneEl = document.querySelector('a-scene');
-  /*var greenEntity = document.querySelector('#green-ok');
-  //greenEntity.setAttribute('position', { x: -8.7, y: -1.374, z: -3.481 });
-  //greenEntity.setAttribute('rotation', { x: 20, y: 70, z: -81.5 });
-  var redEntity = document.querySelector('#red-cross');
+  var greenEntity = document.querySelector('#green-ok');
+  greenEntity.setAttribute('position', { x: 0.488, y: -4.327, z: 8.105 });
+  greenEntity.setAttribute('rotation', { x: -2.2, y: 169.19, z: -94.5 });
+  /*var redEntity = document.querySelector('#red-cross');
   redEntity.setAttribute('position', { x: 6.17, y: -6.74, z: -12.91 });
   redEntity.setAttribute('rotation', { x: -3.5, y: -25.6, z: -81.1 });
   var redEntity1 = document.querySelector('#red-cross1');
@@ -190,7 +190,7 @@
   redEntity2.setAttribute('rotation', { x: 5, y: 0.5, z: -62.9 });
 */
 
-  var sphereAnimation = document.querySelector('#a-entity');
+  var sphereAnimation = document.querySelector('a-entity');
 
   sphereAnimation.addEventListener('animationstart', function () {
     console.log("animation started")
