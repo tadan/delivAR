@@ -126,6 +126,20 @@
   // Starting of the timer
   var identificationStart = new Date();
 
+navigator.mediaDevices.getUserMedia({video: true})
+  .then(gotMedia)
+  .catch(error => console.error('getUserMedia() error:', error));
+
+function gotMedia(mediaStream) {
+  const mediaStreamTrack = mediaStream.getVideoTracks()[0];
+  console.log(mediaStreamTrack);
+  const imageCapture = new ImageCapture(mediaStreamTrack);
+  let settings = mediaStreamTrack.getCapabilities();
+  console.log(settings);
+  document.querySelector("#recTime").innerHTML = settings.iso.max;
+}
+
+
   (function ($) {
       var defaults = {
           callback: function () { },
@@ -154,7 +168,7 @@
             var identificationStop = new Date();
             var timeToIdentify = identificationStop.getTime() - identificationStart.getTime();
                       // console.log("identified in "+timeToIdentify+" millisecond ");
-                      document.querySelector("#recTime").innerHTML = timeToIdentify;
+                      // document.querySelector("#recTime").innerHTML = timeToIdentify;
           } else identificationStart = new Date();
                   options.callback(element, isVisible, initialLoad);
             
