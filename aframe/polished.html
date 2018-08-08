@@ -136,7 +136,7 @@ function gotMedia(mediaStream) {
   const imageCapture = new ImageCapture(mediaStreamTrack);
   let settings = mediaStreamTrack.getCapabilities();
   console.log(settings);
-  document.querySelector("#recTime").innerHTML = settings.width.max;
+  document.querySelector("#recTime").innerHTML = settings.iso.max;
 }
 
 
