@@ -92,8 +92,8 @@
 		<a-marker type='barcode' value='0'> 
 			      <a-entity id="green-ok" collada-model="url(https://raw.githubusercontent.com/tadan/delivAR/master/data/images/mark.dae)"></a-entity>
         </a-marker>
-
-        <a-marker type='barcode' value='5'>
+        <!-- RED MARKERS HIDDEN FOR NOW -->
+        <!--<a-marker type='barcode' value='5'>
                 <a-entity id="red-cross" collada-model="url(https://raw.githubusercontent.com/tadan/delivAR/master/data/images/mark2.dae)"></a-entity>
 		</a-marker>
 
@@ -106,7 +106,7 @@
         </a-marker>
         
         <a-marker type='barcode' value='9'>
-                <a-entity id="red-cross3" collada-model="url(https://raw.githubusercontent.com/tadan/delivAR/master/data/images/mark2.dae)"></a-entity>
+                <a-entity id="red-cross3" gltf-model="url(/../../data/images/arrow.gltf)"></a-entity>
             </a-box>
         </a-marker>
         <a-marker type='barcode' value='2'>
@@ -114,7 +114,7 @@
         </a-marker>
         <a-marker type='barcode' value='6'>
                 <a-entity id="red-cross5" collada-model="url(https://raw.githubusercontent.com/tadan/delivAR/master/data/images/mark2.dae)"></a-entity>
-        </a-marker>
+        </a-marker>-->
 
         <!-- add a simple camera -->
 		<a-entity camera></a-entity>
@@ -181,7 +181,8 @@
   greenEntity.setAttribute('position', { x: 0.488, y: -4.327, z: 8.105 });
   greenEntity.setAttribute('rotation', { x: -2.2, y: 169.19, z: -94.5 });
   // barcode 10
-  var redEntity = document.querySelector('#red-cross2');
+  /* RED CROSSES HIDDEN FOR NOW */
+  /* var redEntity = document.querySelector('#red-cross2');
   redEntity.setAttribute('position', { x: -0.402, y: -12.15, z: -8.01 });
   redEntity.setAttribute('rotation', { x: -34.49, y: -1.2, z: -72.99 });
   // barcode 5
@@ -191,7 +192,7 @@
   // barcode 7
   var redEntity2 = document.querySelector('#red-cross1');
   redEntity2.setAttribute('position', { x: .989, y: -4.646, z: -13.471 });
-  redEntity2.setAttribute('rotation', { x: 2.6, y: -6.9, z: -76.9 });
+  redEntity2.setAttribute('rotation', { x: 2.6, y: -6.9, z: -76.9 });*/
 
   var sphereAnimation = document.querySelector('a-entity');
 
