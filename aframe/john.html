@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<head>
+  <title>delivAR</title>
+  <!-- A-Frame AR.js libraries -->
+  <script src="examples/vendor/aframe/build/aframe.min.js"></script>
+  <script src="build/aframe-ar.js"></script>
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+  <!-- CSS Style -->
+  <style>
+  *:before,
+  *:after {
+        box-sizing: border-box;
+    }
+  body{
+    margin:0px; 
+    overflow:hidden;
+  }
+  #arjsDebugUIContainer, .a-enter-vr-button{
+    display:none;
+  }
+    .textBottom{
+        position:absolute;
+        display:inline-flex;
+        background-color:white;
+        z-index:1;
+        bottom:0.5em;
+        padding:.5em;
+        border-radius: 5px;
+        left:10px;
+        color:black;
+        font-family: 'Roboto', sans-serif;
+        align-items: center;
+        vertical-align: middle;
+    }
+    .imgCont{
+        background-color: white;
+        position: absolute;
+        width:60px;
+        border-radius:5px;
+        top:10px;
+        right:10px;
+    }
+    #recTime{
+        margin:.5em;
+    }
+    h5{
+        margin:0;
+    }
+    .l-arrow-circ{
+        position: absolute;
+        top:10px;
+        left:10px;
+        width: 35px;
+        z-index:1;
+        height: 35px;
+        border-radius: 5px;
+        box-sizing: border-box;
+        background-color:white;
+    }
+    .l-arrow-circ:before {
+        content:"";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 35%;
+        height: 35%;
+        border-left: 3px solid #333;
+        border-bottom: 3px solid #333;
+        -webkit-transform: translate(-30% -50%) rotate(45deg);
+        transform: translate(-30%, -50%) rotate(45deg);
+    }
+  </style>
+</head>
+<!-- HTML -->
+<body id="body">
+  <!-- Arrow Left -->
+  <a href="./../index.html"><div class="l-arrow-circ"></div></a>
+  <!-- Text Box in the bottom-->
+  <div class="textBottom">
+  <h5 class="title">Identification Time [ms]:</h5>
+  <h5 id="recTime"></h5></div>
+  <!-- delivAR logo -->
+  <div class="imgCont">
+  <img src="./../data/images/delivAR_logo_svg.svg" alt="delivAR Logo"></div>
+	<!-- Enable webcam -->
+	<a-scene embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
+ 		<!-- Enable Markers -->
+		<a-marker type='barcode' value='5'> 
+			      <a-entity id="green-ok" collada-model="url(https://raw.githubusercontent.com/tadan/delivAR/master/data/images/mark.dae)"></a-entity>
+        </a-marker>
+        <!-- RED MARKERS HIDDEN FOR NOW -->
+        <!--<a-marker type='barcode' value='5'>
+                <a-entity id="red-cross" collada-model="url(https://raw.githubusercontent.com/tadan/delivAR/master/data/images/mark2.dae)"></a-entity>
+		</a-marker>
+
+		<a-marker type='barcode' value='7'>
+                <a-entity id="red-cross1" collada-model="url(https://raw.githubusercontent.com/tadan/delivAR/master/data/images/mark2.dae)"></a-entity>
+		</a-marker>
+
+        <a-marker type='barcode' value='10'>
+                <a-entity id="red-cross2" collada-model="url(https://raw.githubusercontent.com/tadan/delivAR/master/data/images/mark2.dae)"></a-entity>
+        </a-marker>
+        
+        <a-marker type='barcode' value='9'>
+                <a-entity id="red-cross3" gltf-model="url(/../../data/images/arrow.gltf)"></a-entity>
+            </a-box>
+        </a-marker>
+        <a-marker type='barcode' value='2'>
+                <a-entity id="red-cross4" collada-model="url(https://raw.githubusercontent.com/tadan/delivAR/master/data/images/mark2.dae)"></a-entity>
+        </a-marker>
+        <a-marker type='barcode' value='6'>
+                <a-entity id="red-cross5" collada-model="url(https://raw.githubusercontent.com/tadan/delivAR/master/data/images/mark2.dae)"></a-entity>
+        </a-marker>-->
+
+        <!-- add a simple camera -->
+		<a-entity camera></a-entity>
+	</a-scene>
+</body>
+
+<script>
+ 
+  // Starting of the timer
+  var identificationStart = new Date();
+
+navigator.mediaDevices.getUserMedia({
+    video:{
+        facingMode: 'environment',
+    }
+})
+  .then(gotMedia)
+  .catch(error => console.error('getUserMedia() error:', error));
+
+function gotMedia(mediaStream) {
+  const mediaStreamTrack = mediaStream.getVideoTracks()[0];
+  console.log(mediaStreamTrack);
+  const imageCapture = new ImageCapture(mediaStreamTrack);
+  let settings = mediaStreamTrack.getCapabilities();
+  console.log(settings);
+  document.querySelector("#recTime").innerHTML = settings.iso.max;
+}
+
+
+  (function ($) {
+      var defaults = {
+          callback: function () { },
+          runOnLoad: true,
+          frequency: 100,
+          previousVisibility : null
+      };
+    // Marker Detection
+    var methods = {};
+    methods.checkVisibility = function (element, options) {
+      element.object3D = {}
+      element.object3D.visible = element[0].object3D.visible;
+          if (jQuery.contains(document, element[0])) {
+
+              var previousVisibility = options.previousVisibility;
+              var isVisible = element.object3D.visible;
+              options.previousVisibility = isVisible;
+        var initialLoad = previousVisibility == null
+        //console.log(previousVisibility, isVisible)
+              if (initialLoad) {
+                  if (options.runOnLoad) {
+                      options.callback(element, isVisible, initialLoad);
+                  }
+              } else if (previousVisibility !== isVisible) {
+          if (!previousVisibility) {
+            var identificationStop = new Date();
+            var timeToIdentify = identificationStop.getTime() - identificationStart.getTime();
+                      // console.log("identified in "+timeToIdentify+" millisecond ");
+                      // document.querySelector("#recTime").innerHTML = timeToIdentify;
+          } else identificationStart = new Date();
+                  options.callback(element, isVisible, initialLoad);
+            
+              }
+
+              setTimeout(function() {
+                  methods.checkVisibility(element, options);
+              }, options.frequency);
+          }
+      };
+
+      $.fn.visibilityChanged = function (options) {
+          var settings = $.extend({}, defaults, options);
+          return this.each(function () {
+              methods.checkVisibility($(this), settings);
+          });
+      };
+  })(jQuery);
+
+
+  var sceneEl = document.querySelector('a-scene');
+  // barcode 0
+  var greenEntity = document.querySelector('#green-ok');
+  greenEntity.setAttribute('position', { x: 0.488, y: -4.327, z: 8.105 });
+  greenEntity.setAttribute('rotation', { x: -2.2, y: 169.19, z: -94.5 });
+  // barcode 10
+  /* RED CROSSES HIDDEN FOR NOW */
+  /* var redEntity = document.querySelector('#red-cross2');
+  redEntity.setAttribute('position', { x: -0.402, y: -12.15, z: -8.01 });
+  redEntity.setAttribute('rotation', { x: -34.49, y: -1.2, z: -72.99 });
+  // barcode 5
+  var redEntity1 = document.querySelector('#red-cross');
+  redEntity1.setAttribute('position', { x: 1.379, y: -9.34, z: -11.442 });
+  redEntity1.setAttribute('rotation', { x: -19.4, y: -0.63, z: -51.5 });
+  // barcode 7
+  var redEntity2 = document.querySelector('#red-cross1');
+  redEntity2.setAttribute('position', { x: .989, y: -4.646, z: -13.471 });
+  redEntity2.setAttribute('rotation', { x: 2.6, y: -6.9, z: -76.9 });*/
+
+  var sphereAnimation = document.querySelector('a-entity');
+
+  sphereAnimation.addEventListener('animationstart', function () {
+    console.log("animation started")
+  });
+
+  sphereAnimation.addEventListener('animationend', function () {
+    console.log("animation ended")
+  });
+  console.log(  $('a-marker'))
+  $('a-marker').visibilityChanged(function(element, visible) {
+    console.log('VISIBILITY CHANGED FOR ELEMENT', visible);
+  });
+
+</script>
+</html>
