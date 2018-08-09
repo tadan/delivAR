@@ -11,28 +11,121 @@
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-       <!-- Global site tag (gtag.js) - Google Analytics -->
-        <!--<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118286684-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'UA-118286684-1');
-        </script>-->
+        <style>
+        .btn-xs{
+          border: none;
+          margin-right:10px;
+        }
+        .btn-primary{
+          background-color:transparent;
+          border:1px solid #a96106;
+        }
+        .btn-default{
+          border:none;
+          float: right;
+        }
+        .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+          vertical-align:middle;
+        }
+        </style>
     </head>
     <body>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 col-xs-12 text-center">
-                    <img src="./data/images/delivAR_logo_svg.svg" alt="delivAR logo">
-                    <h5>An experiment to test the tracking capability of AR.js. <br><br> Press Start to begin</h5>
-                    <input type="button" class="btn btn-default" value="Start" onclick="location.href = '/delivAR/aframe/polished.html'" style="margin-top: 20px"><br><br>
-                    <small style="padding:0.5em">Supported by <br>
-                        <img src="./data/images/airmee.png" width="20px" alt="Airmee Logo">
-                        <b>Airmee</b></small>
-                </div>
-            </div>
+      <div class="container">
+        <h2>Order List</h2>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <td></td>
+                <td>Name</td>
+                <td><em>delivAR</em></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title"
+                  aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink" width="40">
+                    <title>Upload</title>
+                    <desc>A color styled icon from Orion Icon Library.</desc>
+                    <path data-name="layer1"
+                    fill="#49bcff" d="M40 28l10 .001v34L14 62V28h10"></path>
+                    <path data-name="opacity" fill="#000028" opacity=".15" d="M31.999 28v16L16 28.002 31.999 28z"></path>
+                    <path data-name="stroke" fill="none" stroke="#2e4369" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" d="M40 28h10v34H14V28h10m8.003 16V2M43 15L32.006 2 21 15"></path>
+                  </svg></td>
+                <td>John. P<br>Gyllenkrooksgatan 1<br>SE-113 39 Stockholm</td>
+                <td><a href='/delivAR/aframe/john.html'><button class="btn-sm btn-primary"><img src="./data/images/package-camera.svg" width="25"></button></a></td>
+              </tr>
+              <tr>
+                  <td><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title"
+                    aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink" width="40">
+                      <title>Download</title>
+                      <desc>A color styled icon from Orion Icon Library.</desc>
+                      <path data-name="layer1"
+                      fill="#5ade9c" d="M24 36H14V2h36v34H40"></path>
+                      <path data-name="opacity" fill="#000028" opacity=".15" d="M31.998 36V20L15.999 35.998 31.998 36z"></path>
+                      <path data-name="stroke" fill="none" stroke="#2e4369" stroke-linecap="round"
+                      stroke-linejoin="round" stroke-width="2" d="M24 36H14V2h36v34H40m-8.002-16v42M21 49l10.994 13L43 49"></path>
+                    </svg></td>
+                  <td><small></small>Paul M.<br>Hagagatan 1<br>
+                    SE-11349 Stockholm</small></td>
+                    <td><a href='/delivAR/aframe/paul.html'><button class="btn-sm btn-primary"><img src="./data/images/package-camera.svg" width="25"></button></a></td>
+              </tr>
+              <tr>
+                  <td><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title"
+                    aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink" width="40">
+                      <title>Download</title>
+                      <desc>A color styled icon from Orion Icon Library.</desc>
+                      <path data-name="layer1"
+                      fill="#5ade9c" d="M24 36H14V2h36v34H40"></path>
+                      <path data-name="opacity" fill="#000028" opacity=".15" d="M31.998 36V20L15.999 35.998 31.998 36z"></path>
+                      <path data-name="stroke" fill="none" stroke="#2e4369" stroke-linecap="round"
+                      stroke-linejoin="round" stroke-width="2" d="M24 36H14V2h36v34H40m-8.002-16v42M21 49l10.994 13L43 49"></path>
+                    </svg></td>
+                  <td><small></small>Donald R.<br>Hagagatan 1<br>
+                    SE-11349 Stockholm</small></td>
+                    <td><a href='/delivAR/aframe/donald.html'><button class="btn-sm btn-primary"><img src="./data/images/package-camera.svg" width="25"></button></a></td>
+              </tr>
+              <tr>
+                  <td><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title"
+                    aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink" width="40">
+                      <title>Upload</title>
+                      <desc>A color styled icon from Orion Icon Library.</desc>
+                      <path data-name="layer1"
+                      fill="#49bcff" d="M40 28l10 .001v34L14 62V28h10"></path>
+                      <path data-name="opacity" fill="#000028" opacity=".15" d="M31.999 28v16L16 28.002 31.999 28z"></path>
+                      <path data-name="stroke" fill="none" stroke="#2e4369" stroke-linecap="round"
+                      stroke-linejoin="round" stroke-width="2" d="M40 28h10v34H14V28h10m8.003 16V2M43 15L32.006 2 21 15"></path>
+                    </svg></td>
+                  <td>John. P<br>Gyllenkrooksgatan 1<br>SE-113 39 Stockholm</td>
+                  <td><a href='/delivAR/aframe/john.html'><button class="btn-sm btn-primary"><img src="./data/images/package-camera.svg" width="25"></button></a></td>
+              </tr>
+              <tr>
+                <td><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title"
+                  aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink" width="40">
+                    <title>Upload</title>
+                    <desc>A color styled icon from Orion Icon Library.</desc>
+                    <path data-name="layer1"
+                    fill="#49bcff" d="M40 28l10 .001v34L14 62V28h10"></path>
+                    <path data-name="opacity" fill="#000028" opacity=".15" d="M31.999 28v16L16 28.002 31.999 28z"></path>
+                    <path data-name="stroke" fill="none" stroke="#2e4369" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" d="M40 28h10v34H14V28h10m8.003 16V2M43 15L32.006 2 21 15"></path>
+                  </svg></td>
+                <td>John. P<br>Gyllenkrooksgatan 1<br>SE-113 39 Stockholm</td>
+                <td><a href='/delivAR/aframe/john.html'><button class="btn-sm btn-primary"><img src="./data/images/package-camera.svg" width="25"></button></a></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+        <div class="row">
+          <div class="col-sm-12 col-xs-12 text-center">
+              <!--<input type="button" class="btn btn-default" value="Start" onclick="location.href = '/delivAR/aframe/polished.html'" style="margin-top: 20px">-->
+              <img src="./data/images/delivAR_logo_svg.svg" width="120" alt="delivAR logo"><br><br>
+              <!--<small style="padding:0.5em">Supported by <br>
+                  <img src="./data/images/airmee.png" width="20px" alt="Airmee Logo">
+                  <b>Airmee</b></small>-->
+          </div>
+        </div>
+      </div>
     </body>
 </html>
