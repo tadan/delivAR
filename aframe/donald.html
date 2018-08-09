@@ -102,7 +102,7 @@
   // Starting of the timer
   var identificationStart = new Date();
 
-navigator.mediaDevices.getUserMedia({
+/*navigator.mediaDevices.getUserMedia({
     video:{
         facingMode: 'environment',
     }
@@ -117,7 +117,7 @@ function gotMedia(mediaStream) {
   let settings = mediaStreamTrack.getCapabilities();
   console.log(settings);
   document.querySelector("#recTime").innerHTML = settings.iso.max;
-}
+}*/
 
 
   (function ($) {
@@ -174,7 +174,7 @@ function gotMedia(mediaStream) {
   var greenEntity = document.querySelector('#green-ok');
   greenEntity.setAttribute('position', { x: 0.488, y: -4.327, z: 8.105 });
   greenEntity.setAttribute('rotation', { x: -2.2, y: 169.19, z: -94.5 });
-  
+
   var sphereAnimation = document.querySelector('a-entity');
 
   sphereAnimation.addEventListener('animationstart', function () {
