@@ -148,7 +148,7 @@ function gotMedia(mediaStream) {
             var identificationStop = new Date();
             var timeToIdentify = identificationStop.getTime() - identificationStart.getTime();
                       // console.log("identified in "+timeToIdentify+" millisecond ");
-                      // document.querySelector("#recTime").innerHTML = timeToIdentify;
+                      document.querySelector("#recTime").innerHTML = timeToIdentify;
           } else identificationStart = new Date();
                   options.callback(element, isVisible, initialLoad);
             
